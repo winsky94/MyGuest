@@ -1,49 +1,82 @@
 package com.demo;
 
+import com.demo.fragment.LeftFragment;
+import com.demo.fragment.TodayFragment;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
+
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
-import android.widget.CheckBox;
-import android.widget.EditText;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class MainActivity extends ActionBarActivity {
-
-	private EditText et_username = null;
-	private EditText et_password = null;
-	private CheckBox cb_remeber_password = null;
+public class MainActivity extends ActionBarActivity implements OnClickListener {
+	private ImageView topButton;
+	private Fragment mContent;
+	private TextView topTextView;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		requestWindowFeature(Window.FEATURE_NO_TITLE); // 无标题
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-//		this.et_username = (EditText) this.findViewById(R.id.et_username);
-//		this.et_password = (EditText) this.findViewById(R.id.et_password);
-//		this.cb_remeber_password = (CheckBox) this.findViewById(R.id.cb_remember_psw);
-//		HashMap<String, String> info = LoginService.getInfo(this);
-//		if (info != null) {
-//			this.et_username.setText(info.get("username"));
-//			this.et_password.setText(info.get("password"));
-//		}
+
+		initSlidingMenu(savedInstanceState);
+
+		topButton = (ImageView) findViewById(R.id.topButton);
+		topButton.setOnClickListener(this);
+		topTextView = (TextView) findViewById(R.id.topTv);
 	}
 
-	// public void login(View view) {
-	// String username = this.et_username.getText().toString().trim();
-	// String password = this.et_password.getText().toString().trim();
-	// if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
-	// Toast.makeText(this, "用户名或密码不能为空", Toast.LENGTH_SHORT).show();
-	// } else {
-	// if (this.cb_remeber_password.isChecked()) {
-	// boolean result = LoginService.saveInfo(this, username, password);
-	// if (result) {
-	// Toast.makeText(this, "保存密码成功", Toast.LENGTH_SHORT).show();
-	// }
-	//
-	// }
-	// if ("weijie".equals(username) && "123".equals(password)) {
-	// Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
-	// } else {
-	// Toast.makeText(this, "登录失败", Toast.LENGTH_SHORT).show();
-	//
-	// }
-	// }
-	// }
+	/**
+	 * 初始化侧边栏
+	 */
+	private void initSlidingMenu(Bundle savedInstanceState) {
+		// 如果保存的状态不为空则得到之前保存的Fragment，否则实例化MyFragment
+		if (savedInstanceState != null) {
+			mContent = getSupportFragmentManager().getFragment(savedInstanceState, "mContent");
+		}
+
+		if (mContent == null) {
+			mContent = new TodayFragment();
+		}
+
+		// 设置左侧滑动菜单
+		setBehindContentView(R.layout.menu_frame_left);
+		getSupportFragmentManager().beginTransaction().replace(R.id.menu_frame, new LeftFragment()).commit();
+
+		// 实例化滑动菜单对象
+		SlidingMenu sm = getSlidingMenu();
+		// 设置可以左右滑动的菜单
+		sm.setMode(SlidingMenu.LEFT);
+		// 设置滑动阴影的宽度
+		sm.setShadowWidthRes(R.dimen.shadow_width);
+		// 设置滑动菜单阴影的图像资源
+		sm.setShadowDrawable(null);
+		// 设置滑动菜单视图的宽度
+		sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+		// 设置渐入渐出效果的值
+		sm.setFadeDegree(0.35f);
+		// 设置触摸屏幕的模式,这里设置为全屏
+		sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+		// 设置下方视图的在滚动时的缩放比例
+		sm.setBehindScrollScale(0.0f);
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.topButton:
+			toggle();
+			break;
+		default:
+			break;
+		}
+	}
 }
