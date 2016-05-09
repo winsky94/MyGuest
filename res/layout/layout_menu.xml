@@ -70,9 +70,9 @@
         android:layout_height="2.0dip"
         android:background="@drawable/biz_pc_account_line" />
 
-    <Button
-         android:id="@+id/BtLogOut"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/BtLogOut"
+        android:layout_width="106dp"
         android:layout_height="50.0dip"
         android:clickable="true"
         android:drawablePadding="1.0dip"
