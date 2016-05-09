@@ -3,45 +3,52 @@ package com.demo.fragment;
 import com.demo.MainActivity;
 import com.demo.R;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.Fragment;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-
 /**
  * @date 2014/11/14
  * @author wuwenjie
  * @description 侧边栏菜单
  */
-public class LeftFragment extends Fragment implements OnClickListener {
+@SuppressLint("InflateParams")
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+public class LeftFragment extends Fragment implements OnClickListener{
 	private View todayView;
 	private View lastListView;
 	private View discussView;
 	private View favoritesView;
 	private View commentsView;
 	private View settingsView;
-
+	
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
-
+	
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 	}
-
+	
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.layout_menu, null);
 		findViews(view);
-
+		
 		return view;
 	}
-
+	
+	
 	public void findViews(View view) {
 		todayView = view.findViewById(R.id.tvToday);
 		lastListView = view.findViewById(R.id.tvLastlist);
@@ -49,7 +56,7 @@ public class LeftFragment extends Fragment implements OnClickListener {
 		favoritesView = view.findViewById(R.id.tvMyFavorites);
 		commentsView = view.findViewById(R.id.tvMyComments);
 		settingsView = view.findViewById(R.id.tvMySettings);
-
+		
 		todayView.setOnClickListener(this);
 		lastListView.setOnClickListener(this);
 		discussView.setOnClickListener(this);
@@ -57,12 +64,12 @@ public class LeftFragment extends Fragment implements OnClickListener {
 		commentsView.setOnClickListener(this);
 		settingsView.setOnClickListener(this);
 	}
-
+	
 	@Override
 	public void onDestroyView() {
 		super.onDestroyView();
 	}
-
+	
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
@@ -104,10 +111,9 @@ public class LeftFragment extends Fragment implements OnClickListener {
 			switchFragment(newContent, title);
 		}
 	}
-
+	
 	/**
 	 * 切换fragment
-	 * 
 	 * @param fragment
 	 */
 	private void switchFragment(Fragment fragment, String title) {
@@ -119,5 +125,5 @@ public class LeftFragment extends Fragment implements OnClickListener {
 			fca.switchConent(fragment, title);
 		}
 	}
-
+	
 }
