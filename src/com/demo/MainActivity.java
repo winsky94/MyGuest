@@ -7,14 +7,19 @@ import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainActivity extends ActionBarActivity implements OnClickListener {
+/**
+ * @date 2014/11/14
+ * @author wuwenjie
+ * @description 主界面
+ */
+public class MainActivity extends SlidingFragmentActivity implements OnClickListener {
+
 	private ImageView topButton;
 	private Fragment mContent;
 	private TextView topTextView;
@@ -24,7 +29,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // 无标题
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
 		initSlidingMenu(savedInstanceState);
 
 		topButton = (ImageView) findViewById(R.id.topButton);
@@ -69,8 +73,29 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	}
 
 	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		//在保存fragment之前，确保该fragment被加入到fragment manager中
+		//不然按home键程序会异常
+		if (mContent.isAdded()) {
+			getSupportFragmentManager().putFragment(outState, "mContent", mContent);
+		}
+	}
+
+	/**
+	 * 切换Fragment
+	 * 
+	 * @param fragment
+	 */
+	public void switchConent(Fragment fragment, String title) {
+		mContent = fragment;
+		getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+		getSlidingMenu().showContent();
+		topTextView.setText(title);
+	}
+
+	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.topButton:
 			toggle();
@@ -79,4 +104,5 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			break;
 		}
 	}
+
 }
