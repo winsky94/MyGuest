@@ -3,6 +3,7 @@ package com.demo;
 import com.demo.fragment.FragmentFactory;
 import com.demo.fragment.LeftFragment;
 import com.demo.fragment.TodayFragment;
+import com.demo.utils.LogUtil;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 
@@ -33,7 +34,7 @@ public class MainActivity extends SlidingFragmentActivity implements OnClickList
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		initSlidingMenu(savedInstanceState);
-
+		
 		topButton = (ImageView) findViewById(R.id.topButton);
 		topButton.setOnClickListener(this);
 		topTextView = (TextView) findViewById(R.id.topTv);
@@ -61,6 +62,7 @@ public class MainActivity extends SlidingFragmentActivity implements OnClickList
 		}
 
 		if (mContent == null) {
+			LogUtil.i("mcontent==null");
 			mContent = new TodayFragment();
 		}
 
