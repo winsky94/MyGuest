@@ -9,6 +9,6 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:paddingLeft="15.0dip"
-            android:text="这是我的收藏页"
+            android:text="这是退出登录页"
             android:textSize="14.0sp" />
 </RelativeLayout>

@@ -45,13 +45,6 @@ public class MainActivity extends SlidingFragmentActivity implements OnClickList
 		// 刚进去默认就设置客户列表
 		RadioButton customerRB = (RadioButton) findViewById(R.id.customerRB);
 		customerRB.setChecked(true);
-		// radioGroup.check(2);
-		// android.app.FragmentTransaction transaction =
-		// fragmentManager.beginTransaction();
-		// android.app.Fragment fragment =
-		// FragmentFactory.getInstanceByIndex(2);
-		// transaction.replace(R.id.content_frame, fragment);
-		// transaction.commit();
 
 		radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			@Override

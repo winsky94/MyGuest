@@ -18,7 +18,7 @@ import android.view.ViewGroup;
  */
 @SuppressLint("InflateParams")
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class TodayFragment extends Fragment {
+public class LogOutFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,7 +31,7 @@ public class TodayFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.frag_today, null);
+		View view = inflater.inflate(R.layout.frag_logout, null);
 		return view;
 	}
 

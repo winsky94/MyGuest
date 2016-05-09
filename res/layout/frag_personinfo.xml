@@ -9,7 +9,7 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:paddingLeft="15.0dip"
-        android:text="这是讨论集会页面"
+        android:text="这是个人信息页"
         android:textSize="14.0sp" />
 
 </RelativeLayout>
