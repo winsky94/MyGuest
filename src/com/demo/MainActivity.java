@@ -1,29 +1,32 @@
 package com.demo;
 
+import com.demo.fragment.FragmentFactory;
 import com.demo.fragment.LeftFragment;
 import com.demo.fragment.TodayFragment;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 
+import android.annotation.TargetApi;
+import android.app.Fragment;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
-/**
- * @date 2014/11/14
- * @author wuwenjie
- * @description 主界面
- */
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class MainActivity extends SlidingFragmentActivity implements OnClickListener {
+	private android.app.FragmentManager fragmentManager;
+	private RadioGroup radioGroup;
 
 	private ImageView topButton;
 	private Fragment mContent;
 	private TextView topTextView;
 
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // 无标题
@@ -34,6 +37,18 @@ public class MainActivity extends SlidingFragmentActivity implements OnClickList
 		topButton = (ImageView) findViewById(R.id.topButton);
 		topButton.setOnClickListener(this);
 		topTextView = (TextView) findViewById(R.id.topTv);
+
+		fragmentManager = getFragmentManager();
+		radioGroup = (RadioGroup) findViewById(R.id.rg_tab);
+		radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				android.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
+				android.app.Fragment fragment = FragmentFactory.getInstanceByIndex(checkedId);
+				transaction.replace(R.id.content_frame, fragment);
+				transaction.commit();
+			}
+		});
 	}
 
 	/**
@@ -42,7 +57,7 @@ public class MainActivity extends SlidingFragmentActivity implements OnClickList
 	private void initSlidingMenu(Bundle savedInstanceState) {
 		// 如果保存的状态不为空则得到之前保存的Fragment，否则实例化MyFragment
 		if (savedInstanceState != null) {
-			mContent = getSupportFragmentManager().getFragment(savedInstanceState, "mContent");
+			mContent = getFragmentManager().getFragment(savedInstanceState, "mContent");
 		}
 
 		if (mContent == null) {
@@ -51,7 +66,7 @@ public class MainActivity extends SlidingFragmentActivity implements OnClickList
 
 		// 设置左侧滑动菜单
 		setBehindContentView(R.layout.menu_frame_left);
-		getSupportFragmentManager().beginTransaction().replace(R.id.menu_frame, new LeftFragment()).commit();
+		getFragmentManager().beginTransaction().replace(R.id.menu_frame, new LeftFragment()).commit();
 
 		// 实例化滑动菜单对象
 		SlidingMenu sm = getSlidingMenu();
@@ -75,10 +90,10 @@ public class MainActivity extends SlidingFragmentActivity implements OnClickList
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		//在保存fragment之前，确保该fragment被加入到fragment manager中
-		//不然按home键程序会异常
+		// 在保存fragment之前，确保该fragment被加入到fragment manager中
+		// 不然按home键程序会异常
 		if (mContent.isAdded()) {
-			getSupportFragmentManager().putFragment(outState, "mContent", mContent);
+			getFragmentManager().putFragment(outState, "mContent", mContent);
 		}
 	}
 
@@ -89,7 +104,7 @@ public class MainActivity extends SlidingFragmentActivity implements OnClickList
 	 */
 	public void switchConent(Fragment fragment, String title) {
 		mContent = fragment;
-		getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+		getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
 		getSlidingMenu().showContent();
 		topTextView.setText(title);
 	}

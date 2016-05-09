@@ -9,5 +9,30 @@
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    
+    <RadioGroup
+        android:id="@+id/rg_tab"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bg_weibo_listab"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            style="@style/weibo_tab"
+            android:drawableTop="@drawable/weibolist_global_selector"
+            android:text="\@商务" />
+
+        <RadioButton
+            style="@style/weibo_tab"
+            android:drawableTop="@drawable/weibolist_mylist_selector"
+            android:text="客户" />
+
+        <RadioButton
+            style="@style/weibo_tab"
+            android:drawableTop="@drawable/weibolist_attention_selector"
+            android:text="业务" />
+    </RadioGroup>
 
 </LinearLayout>
