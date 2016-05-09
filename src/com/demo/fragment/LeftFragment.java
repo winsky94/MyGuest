@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+
 /**
  * @date 2014/11/14
  * @author wuwenjie
@@ -20,56 +21,44 @@ import android.view.ViewGroup;
  */
 @SuppressLint("InflateParams")
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class LeftFragment extends Fragment implements OnClickListener{
-	private View todayView;
-	private View lastListView;
-	private View discussView;
-	private View favoritesView;
-	private View commentsView;
+public class LeftFragment extends Fragment implements OnClickListener {
+	private View personInfoView;
+	private View logOutView;
 	private View settingsView;
-	
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
-	
+
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 	}
-	
+
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.layout_menu, null);
 		findViews(view);
-		
+
 		return view;
 	}
-	
-	
+
 	public void findViews(View view) {
-		todayView = view.findViewById(R.id.tvToday);
-		lastListView = view.findViewById(R.id.tvLastlist);
-		discussView = view.findViewById(R.id.tvDiscussMeeting);
-		favoritesView = view.findViewById(R.id.tvMyFavorites);
-		commentsView = view.findViewById(R.id.tvMyComments);
-		settingsView = view.findViewById(R.id.tvMySettings);
-		
-		todayView.setOnClickListener(this);
-		lastListView.setOnClickListener(this);
-		discussView.setOnClickListener(this);
-		favoritesView.setOnClickListener(this);
-		commentsView.setOnClickListener(this);
+		personInfoView = view.findViewById(R.id.tvPersonInfo);
+		logOutView = view.findViewById(R.id.BtLogOut);
+		settingsView = view.findViewById(R.id.tvSettings);
+
+		personInfoView.setOnClickListener(this);
+		logOutView.setOnClickListener(this);
 		settingsView.setOnClickListener(this);
 	}
-	
+
 	@Override
 	public void onDestroyView() {
 		super.onDestroyView();
 	}
-	
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
@@ -80,28 +69,16 @@ public class LeftFragment extends Fragment implements OnClickListener{
 		Fragment newContent = null;
 		String title = null;
 		switch (v.getId()) {
-		case R.id.tvToday: // 今日
-			newContent = new TodayFragment();
-			title = getString(R.string.today);
+		case R.id.tvPersonInfo: // 个人信息
+			newContent = new PersonInfoFragment();
+			title = getString(R.string.personInfo);
 			break;
-		case R.id.tvLastlist:// 往期列表
-			newContent = new LastListFragment();
-			title = getString(R.string.lastList);
+		case R.id.BtLogOut:// 退出登录
+			newContent = new LogOutFragment();
+			title = getString(R.string.logOut);
 			break;
-		case R.id.tvDiscussMeeting: // 讨论集会
-			newContent = new DiscussFragment();
-			title = getString(R.string.discussMeetting);
-			break;
-		case R.id.tvMyFavorites: // 我的收藏
-			newContent = new MyFavoritesFragment();
-			title = getString(R.string.myFavorities);
-			break;
-		case R.id.tvMyComments: // 我的评论
-			newContent = new MyCommentsFragment();
-			title = getString(R.string.myComments);
-			break;
-		case R.id.tvMySettings: // 设置
-			newContent = new MySettingsFragment();
+		case R.id.tvSettings: // 设置
+			newContent = new SettingsFragment();
 			title = getString(R.string.settings);
 			break;
 		default:
@@ -111,9 +88,10 @@ public class LeftFragment extends Fragment implements OnClickListener{
 			switchFragment(newContent, title);
 		}
 	}
-	
+
 	/**
 	 * 切换fragment
+	 * 
 	 * @param fragment
 	 */
 	private void switchFragment(Fragment fragment, String title) {
@@ -125,5 +103,5 @@ public class LeftFragment extends Fragment implements OnClickListener{
 			fca.switchConent(fragment, title);
 		}
 	}
-	
+
 }
