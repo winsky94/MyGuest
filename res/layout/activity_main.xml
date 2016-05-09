@@ -27,6 +27,7 @@
             android:text="\@商务" />
 
         <RadioButton
+            android:id="@+id/customerRB"
             style="@style/weibo_tab"
             android:drawableTop="@drawable/weibolist_mylist_selector"
             android:text="客户" />
