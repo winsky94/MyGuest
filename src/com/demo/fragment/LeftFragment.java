@@ -3,7 +3,6 @@ package com.demo.fragment;
 import com.demo.MainActivity;
 import com.demo.R;
 import com.demo.activity.LoginActivity;
-import com.demo.utils.LogUtil;
 import com.demo.utils.SharedPreferenceUtil;
 
 import android.annotation.SuppressLint;
@@ -78,14 +77,14 @@ public class LeftFragment extends Fragment implements OnClickListener {
 			title = getString(R.string.personInfo);
 			break;
 		case R.id.BtLogOut:// 退出登录
-//			newContent = new LogOutFragment();
-//			title = getString(R.string.logOut);
-			
-			//清楚记录的用户名密码
+			// newContent = new LogOutFragment();
+			// title = getString(R.string.logOut);
+
+			// 清除记录的用户名密码
 			SharedPreferenceUtil.remove(getActivity(), "user_name");
 			SharedPreferenceUtil.remove(getActivity(), "password");
-			
-			//退出，到登录界面
+
+			// 退出，到登录界面
 			Intent intent = new Intent(getActivity(), LoginActivity.class);
 			startActivity(intent);
 			break;
