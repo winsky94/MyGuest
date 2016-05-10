@@ -28,6 +28,7 @@ public class LeftFragment extends Fragment implements OnClickListener {
 	private View personInfoView;
 	private View logOutView;
 	private View settingsView;
+	private View workView;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -51,10 +52,12 @@ public class LeftFragment extends Fragment implements OnClickListener {
 		personInfoView = view.findViewById(R.id.tvPersonInfo);
 		logOutView = view.findViewById(R.id.BtLogOut);
 		settingsView = view.findViewById(R.id.tvSettings);
+		workView = view.findViewById(R.id.tvWork);
 
 		personInfoView.setOnClickListener(this);
 		logOutView.setOnClickListener(this);
 		settingsView.setOnClickListener(this);
+		workView.setOnClickListener(this);
 	}
 
 	@Override
@@ -72,6 +75,9 @@ public class LeftFragment extends Fragment implements OnClickListener {
 		Fragment newContent = null;
 		String title = null;
 		switch (v.getId()) {
+		case R.id.tvWork:// 业务办公
+			newContent=new MainFragment();
+			break;
 		case R.id.tvPersonInfo: // 个人信息
 			newContent = new PersonInfoFragment();
 			title = getString(R.string.personInfo);
