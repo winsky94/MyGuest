@@ -1,6 +1,7 @@
 package com.demo.fragment;
 
 import com.demo.R;
+import com.demo.utils.LogUtil;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
