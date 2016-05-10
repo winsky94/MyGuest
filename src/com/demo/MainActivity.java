@@ -3,6 +3,7 @@ package com.demo;
 import com.demo.fragment.CustomerFragmentAll;
 import com.demo.fragment.FragmentFactory;
 import com.demo.fragment.LeftFragment;
+import com.demo.fragment.MainFragment;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 
@@ -20,8 +21,6 @@ import android.widget.TextView;
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class MainActivity extends SlidingFragmentActivity implements OnClickListener {
 	private android.app.FragmentManager fragmentManager;
-	private RadioGroup radioGroup;
-
 	private ImageView topButton;
 	private Fragment mContent;
 	private TextView topTextView;
@@ -39,24 +38,10 @@ public class MainActivity extends SlidingFragmentActivity implements OnClickList
 		topTextView = (TextView) findViewById(R.id.topTv);
 
 		fragmentManager = getFragmentManager();
-		radioGroup = (RadioGroup) findViewById(R.id.rg_tab);
-
-		// 进去之后默认是客户列表页
-		radioGroup.check(2);
 		android.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
-		android.app.Fragment fragment = FragmentFactory.getInstanceByIndex(2);
+		android.app.Fragment fragment = new MainFragment();
 		transaction.replace(R.id.content_frame, fragment);
 		transaction.commit();
-
-		radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(RadioGroup group, int checkedId) {
-				android.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
-				android.app.Fragment fragment = FragmentFactory.getInstanceByIndex(checkedId);
-				transaction.replace(R.id.content_frame, fragment);
-				transaction.commit();
-			}
-		});
 	}
 
 	/**
