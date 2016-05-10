@@ -1,6 +1,6 @@
 package com.demo;
 
-import com.demo.fragment.CustomerFragment;
+import com.demo.fragment.CustomerFragmentAll;
 import com.demo.fragment.FragmentFactory;
 import com.demo.fragment.LeftFragment;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -69,7 +69,7 @@ public class MainActivity extends SlidingFragmentActivity implements OnClickList
 		}
 
 		if (mContent == null) {
-			mContent = new CustomerFragment();
+			mContent = new CustomerFragmentAll();
 		}
 
 		// 设置左侧滑动菜单
