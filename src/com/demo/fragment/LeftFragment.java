@@ -77,6 +77,7 @@ public class LeftFragment extends Fragment implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.tvWork:// 业务办公
 			newContent=new MainFragment();
+			title=getString(R.string.customers);
 			break;
 		case R.id.tvPersonInfo: // 个人信息
 			newContent = new PersonInfoFragment();

@@ -36,7 +36,7 @@ public class MainFragment extends Fragment {
 		radioGroup = (RadioGroup) view.findViewById(R.id.rg_tab);
 
 		// 进去之后默认是客户列表页
-		// radioGroup.check(2);
+		radioGroup.check(2);
 		// android.app.FragmentTransaction transaction =
 		// fragmentManager.beginTransaction();
 		// android.app.Fragment fragment =
@@ -76,40 +76,32 @@ public class MainFragment extends Fragment {
 		// 开启一个Fragment事务
 		FragmentTransaction transaction = fragmentManager.beginTransaction();
 		// 先隐藏掉所有的Fragment，以防止有多个Fragment显示在界面上的情况
-		hideFragments(transaction);
 		switch (index) {
 		case 1:
 			// 当点击了消息tab时，改变控件的图片和文字颜色
 			if (businessFragment == null) {
 				// 如果MessageFragment为空，则创建一个并添加到界面上
 				businessFragment = new BusinessFragment();
-				transaction.add(R.id.main_content_frame, businessFragment);
-			} else {
-				// 如果MessageFragment不为空，则直接将它显示出来
-				transaction.show(businessFragment);
 			}
+			transaction.replace(R.id.main_content_frame, businessFragment);
 			break;
 		case 2:
 			// 当点击了联系人tab时，改变控件的图片和文字颜色
 			if (customerFragment == null) {
 				// 如果MessageFragment为空，则创建一个并添加到界面上
 				customerFragment = new CustomerFragment();
-				transaction.add(R.id.main_content_frame, customerFragment);
-			} else {
-				// 如果MessageFragment不为空，则直接将它显示出来
-				transaction.show(customerFragment);
+				transaction.replace(R.id.main_content_frame, customerFragment);
 			}
+			transaction.replace(R.id.main_content_frame, customerFragment);
 			break;
 		case 3:
 			// 当点击了动态tab时，改变控件的图片和文字颜色
 			if (workFragment == null) {
 				// 如果MessageFragment为空，则创建一个并添加到界面上
 				workFragment = new WorkFragment();
-				transaction.add(R.id.main_content_frame, workFragment);
-			} else {
-				// 如果MessageFragment不为空，则直接将它显示出来
-				transaction.show(workFragment);
+
 			}
+			transaction.replace(R.id.main_content_frame, workFragment);
 			break;
 		default:
 			break;
@@ -123,15 +115,15 @@ public class MainFragment extends Fragment {
 	 * @param transaction
 	 *            用于对Fragment执行操作的事务
 	 */
-	private void hideFragments(FragmentTransaction transaction) {
-		if (customerFragment != null) {
-			transaction.hide(customerFragment);
-		}
-		if (businessFragment != null) {
-			transaction.hide(businessFragment);
-		}
-		if (workFragment != null) {
-			transaction.hide(workFragment);
-		}
-	}
+	// private void hideFragments(FragmentTransaction transaction) {
+	// if (customerFragment != null) {
+	// transaction.hide(customerFragment);
+	// }
+	// if (businessFragment != null) {
+	// transaction.hide(businessFragment);
+	// }
+	// if (workFragment != null) {
+	// transaction.hide(workFragment);
+	// }
+	// }
 }
