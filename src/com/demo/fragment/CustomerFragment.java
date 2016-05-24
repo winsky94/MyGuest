@@ -1,7 +1,6 @@
 package com.demo.fragment;
 
 import com.demo.R;
-import com.demo.utils.LogUtil;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -28,12 +27,11 @@ public class CustomerFragment extends Fragment {
 	public static final int MESSAGE_FRAGMENT_TYPE = 1;
 	public static final int CALL_FRAGMENT_TYPE = 2;
 	public int currentFragmentType = -1;
-	
+
 	@SuppressLint("InflateParams")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		// 这样来切换布局，而不是局限于一个布局	
 		View view = inflater.inflate(R.layout.frag_customer, null);
 
 		btn_message = (Button) view.findViewById(R.id.btn_my);
