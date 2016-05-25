@@ -23,16 +23,19 @@
         android:orientation="horizontal" >
 
         <RadioButton
+            android:id="@+id/business"
             style="@style/weibo_tab"
             android:drawableTop="@drawable/weibolist_global_selector"
             android:text="\@商务" />
 
         <RadioButton
+            android:id="@+id/customer"
             style="@style/weibo_tab"
             android:drawableTop="@drawable/weibolist_mylist_selector"
             android:text="客户" />
 
         <RadioButton
+            android:id="@+id/work"
             style="@style/weibo_tab"
             android:drawableTop="@drawable/weibolist_attention_selector"
             android:text="业务" />

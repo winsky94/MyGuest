@@ -31,12 +31,12 @@ public class MainFragment extends Fragment {
 
 		// 这样来切换布局，而不是局限于一个布局
 		View view = inflater.inflate(R.layout.activity_main_base, null);
-
 		fragmentManager = getFragmentManager();
+
 		radioGroup = (RadioGroup) view.findViewById(R.id.rg_tab);
 
 		// 进去之后默认是客户列表页
-		radioGroup.check(2);
+		radioGroup.check(R.id.customer);
 		// android.app.FragmentTransaction transaction =
 		// fragmentManager.beginTransaction();
 		// android.app.Fragment fragment =
@@ -44,7 +44,7 @@ public class MainFragment extends Fragment {
 		// transaction.replace(R.id.main_content_frame, fragment);
 		// transaction.addToBackStack(null);
 		// transaction.commit();
-		setTabSelection(2);
+		setTabSelection(R.id.customer);
 
 		radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			@Override
@@ -68,7 +68,7 @@ public class MainFragment extends Fragment {
 	 * 根据传入的index参数来设置选中的tab页。
 	 * 
 	 * @param index
-	 *            每个tab页对应的下标。0表示消息，1表示联系人，2表示动态，3表示设置。
+	 *            每个tab页对应的下标。1表示商务，2表示客户，3表示业务。
 	 */
 	private void setTabSelection(int index) {
 		// 每次选中之前先清楚掉上次的选中状态
@@ -77,7 +77,7 @@ public class MainFragment extends Fragment {
 		FragmentTransaction transaction = fragmentManager.beginTransaction();
 		// 先隐藏掉所有的Fragment，以防止有多个Fragment显示在界面上的情况
 		switch (index) {
-		case 1:
+		case R.id.business:
 			// 当点击了消息tab时，改变控件的图片和文字颜色
 			if (businessFragment == null) {
 				// 如果MessageFragment为空，则创建一个并添加到界面上
@@ -85,16 +85,15 @@ public class MainFragment extends Fragment {
 			}
 			transaction.replace(R.id.main_content_frame, businessFragment);
 			break;
-		case 2:
+		case R.id.customer:
 			// 当点击了联系人tab时，改变控件的图片和文字颜色
 			if (customerFragment == null) {
 				// 如果MessageFragment为空，则创建一个并添加到界面上
 				customerFragment = new CustomerFragment();
-				transaction.replace(R.id.main_content_frame, customerFragment);
 			}
 			transaction.replace(R.id.main_content_frame, customerFragment);
 			break;
-		case 3:
+		case R.id.work:
 			// 当点击了动态tab时，改变控件的图片和文字颜色
 			if (workFragment == null) {
 				// 如果MessageFragment为空，则创建一个并添加到界面上
