@@ -1,6 +1,7 @@
 package com.demo.fragment;
 
 import com.demo.R;
+import com.demo.utils.ToastUtil;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -15,11 +16,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class CustomerFragment extends Fragment {
 
 	private Button btn_message, btn_call;
+	private ImageView imageView;
 
 	private CustomerFragmentAll allCustomer;
 	private CustomerFragmentMy myCustomer;
@@ -35,8 +38,12 @@ public class CustomerFragment extends Fragment {
 
 		btn_message = (Button) view.findViewById(R.id.btn_my);
 		btn_call = (Button) view.findViewById(R.id.btn_all);
+		imageView=(ImageView)getActivity().findViewById(R.id.addButton);
 		btn_message.setOnClickListener(onClicker);
 		btn_call.setOnClickListener(onClicker);
+		
+		imageView.setImageResource(R.drawable.plus);
+		imageView.setOnClickListener(addListener);
 
 		FragmentManager fragmentManager = getFragmentManager();
 		if (savedInstanceState != null) {
@@ -112,4 +119,13 @@ public class CustomerFragment extends Fragment {
 			}
 		}
 	};
+	
+	private OnClickListener addListener=new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			ToastUtil.showLong(getActivity(), "add customer");
+			
+		}
+	}; 
 }
