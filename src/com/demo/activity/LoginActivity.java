@@ -2,6 +2,7 @@ package com.demo.activity;
 
 import com.demo.MainActivity;
 import com.demo.R;
+import com.demo.common.Configure;
 import com.demo.presenter.LoginPresenter;
 import com.demo.utils.SharedPreferenceUtil;
 import com.demo.utils.ToastUtil;
@@ -42,8 +43,8 @@ public class LoginActivity extends Activity implements OnClickListener, LoginVie
 		case R.id.btn_login:
 			boolean result = loginPresenter.login();
 			if (result) {
-				SharedPreferenceUtil.put(this, "user_name", getName());
-				SharedPreferenceUtil.put(this, "password", getPassword());
+				SharedPreferenceUtil.put(this, Configure.STAFF_ID, getName());
+				SharedPreferenceUtil.put(this, Configure.PASSWORD, getPassword());
 			}
 			break;
 		default:

@@ -1,7 +1,7 @@
 package com.demo.presenter;
 
+import com.demo.listener.OnLoginListener;
 import com.demo.model.LoginModel;
-import com.demo.model.OnLoginListener;
 import com.demo.model.impl.LoginModelImpl;
 import com.demo.view.LoginView;
 

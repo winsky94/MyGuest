@@ -1,7 +1,6 @@
 package com.demo.fragment;
 
 import com.demo.R;
-import com.demo.utils.ToastUtil;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -38,10 +37,10 @@ public class CustomerFragment extends Fragment {
 
 		btn_message = (Button) view.findViewById(R.id.btn_my);
 		btn_call = (Button) view.findViewById(R.id.btn_all);
-		imageView=(ImageView)getActivity().findViewById(R.id.addButton);
+		imageView = (ImageView) getActivity().findViewById(R.id.addButton);
 		btn_message.setOnClickListener(onClicker);
 		btn_call.setOnClickListener(onClicker);
-		
+
 		imageView.setImageResource(R.drawable.plus);
 		imageView.setOnClickListener(addListener);
 
@@ -119,13 +118,17 @@ public class CustomerFragment extends Fragment {
 			}
 		}
 	};
-	
-	private OnClickListener addListener=new OnClickListener() {
+
+	private OnClickListener addListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			ToastUtil.showLong(getActivity(), "add customer");
-			
+			FragmentManager fragmentManager = getFragmentManager();
+			FragmentTransaction transaction = fragmentManager.beginTransaction();
+			AddCustomerFragment addCustomerFragment = new AddCustomerFragment();
+			transaction.replace(R.id.content_frame, addCustomerFragment, "addCustomerFragment");
+			transaction.commit();
+
 		}
-	}; 
+	};
 }
