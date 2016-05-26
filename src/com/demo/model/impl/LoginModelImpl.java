@@ -1,7 +1,7 @@
 package com.demo.model.impl;
 
+import com.demo.listener.OnLoginListener;
 import com.demo.model.LoginModel;
-import com.demo.model.OnLoginListener;
 import com.loopj.android.http.RequestParams;
 
 /**

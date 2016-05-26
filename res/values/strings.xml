@@ -8,5 +8,19 @@
     <string name="logOut">退出登录</string>
     <string name="settings">设置</string>
     <string name="customers">客户列表</string>
+    <string name="add_customer">新增客户</string>
+
+    <string-array name="customer_status">
+        <item>初访</item>
+        <item>意向</item>
+        <item>报价</item>
+        <item>成交</item>
+        <item>搁置</item>
+    </string-array>
+    <string-array name="customer_type">
+        <item>重要客户</item>
+        <item>一般客户</item>
+        <item>低价值客户</item>
+    </string-array>
 
 </resources>

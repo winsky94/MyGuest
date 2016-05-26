@@ -1,5 +1,7 @@
 package com.demo.model;
 
+import com.demo.listener.OnLoginListener;
+
 /**
  * Description: 登录接口
  */
