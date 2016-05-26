@@ -1,6 +1,9 @@
 package com.demo.fragment;
 
 import com.demo.R;
+import android.annotation.SuppressLint;
+import android.view.LayoutInflater;
+import android.view.View;
 
 public class CustomerFragmentAll extends BaseFragment {
 	@Override
@@ -8,10 +11,12 @@ public class CustomerFragmentAll extends BaseFragment {
 		return "这是客户界面";
 	}
 
+	@SuppressLint("InflateParams")
 	@Override
-	public int initLayout() {
+	public View initLayout(LayoutInflater inflater) {
 		// TODO Auto-generated method stub
-		return R.layout.frag_customer_all;
+		View view = inflater.inflate(R.layout.frag_customer_all, null);
+		return view;
 	}
 
 }
