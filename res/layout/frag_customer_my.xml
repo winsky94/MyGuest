@@ -3,19 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ExpandableListView
+    <ListView
         android:id="@+id/myCustomerList"
+        android:layout_marginTop="50dp"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
-    </ExpandableListView>
+    </ListView>
 
-    <!-- <TextView
+    <!--
+         <TextView
         android:layout_width="match_parent"
         android:layout_height="28.0dip"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:paddingLeft="15.0dip"
         android:text="这是我的客户列表页"
-        android:textSize="14.0sp" /> -->
+        android:textSize="14.0sp" />
+    -->
 
 </RelativeLayout>

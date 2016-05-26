@@ -4,26 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.demo.R;
-import com.demo.view.ExpandAdapter;
 import com.demo.view.Item;
+import com.demo.view.ListViewAdapter;
+
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ExpandableListView;
-import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ListView;
 
 @SuppressLint("InflateParams")
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class CustomerFragmentMy extends BaseFragment {
-	private ExpandableListView mListView = null;
-	private ExpandAdapter mAdapter = null;
-	private List<List<Item>> mData = new ArrayList<List<Item>>();
+	private ListView mListView = null;
+	private List<Item> mData = new ArrayList<Item>();
 
 	private int[] mGroupArrays = new int[] { R.array.tianlongbabu, R.array.shediaoyingxiongzhuan,
 			R.array.shendiaoxialv };
@@ -50,57 +45,29 @@ public class CustomerFragmentMy extends BaseFragment {
 		// mListView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
 		// LayoutParams.FILL_PARENT));
 		// getActivity().setContentView(mListView);
-		mListView = (ExpandableListView) view.findViewById(R.id.myCustomerList);
+		mListView = (ListView) view.findViewById(R.id.myCustomerList);
 
-		mListView.setGroupIndicator(getResources().getDrawable(R.drawable.expander_floder));
-		mAdapter = new ExpandAdapter(getActivity(), mData);
-		mListView.setAdapter(mAdapter);
-		mListView.setDescendantFocusability(ExpandableListView.FOCUS_AFTER_DESCENDANTS);
-		mListView.setOnChildClickListener(new childClickListener());
-
+		// mListView.setGroupIndicator(getResources().getDrawable(R.drawable.expander_floder));
+		// mAdapter = new ExpandAdapter(getActivity(), mData);
+		// mListView.setAdapter(mAdapter);
+		// mListView.setDescendantFocusability(ExpandableListView.FOCUS_AFTER_DESCENDANTS);
+		// mListView.setOnChildClickListener(new childClickListener());
+		mListView.setAdapter(new ListViewAdapter(mData, getActivity()));
 		return view;
 	}
 
 	private void initData() {
 		for (int i = 0; i < mGroupArrays.length; i++) {
-			List<Item> list = new ArrayList<Item>();
 			String[] childs = getStringArray(mGroupArrays[i]);
 			String[] details = getStringArray(mDetailIds[i]);
 			for (int j = 0; j < childs.length; j++) {
 				Item item = new Item(mImageIds[i][j], childs[j], details[j]);
-				list.add(item);
+				mData.add(item);
 			}
-			mData.add(list);
 		}
 	}
 
 	private String[] getStringArray(int resId) {
 		return getResources().getStringArray(resId);
 	}
-
-	class childClickListener implements OnChildClickListener {
-		/*
-		 * ChildView 设置 布局很可能onChildClick进不来，要在 ChildView layout 里加上
-		 * android:descendantFocusability="blocksDescendants",
-		 * 还有isChildSelectable里返回true
-		 */
-		@Override
-		public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-			// TODO Auto-generated method stub
-			Item item = mAdapter.getChild(groupPosition, childPosition);
-			new AlertDialog.Builder(getActivity()).setTitle(item.getName()).setMessage(item.getDetail())
-					.setIcon(android.R.drawable.ic_menu_more)
-					.setNegativeButton(android.R.string.cancel, new OnClickListener() {
-
-						@Override
-						public void onClick(DialogInterface arg0, int arg1) {
-							// TODO Auto-generated method stub
-
-						}
-
-					}).create().show();
-			return true;
-		}
-	}
-
 }
