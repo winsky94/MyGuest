@@ -21,6 +21,16 @@ public class MainFragment extends Fragment {
 	private CustomerFragment customerFragment;
 	private BusinessFragment businessFragment;
 	private WorkFragment workFragment;
+	private int selectedId = -1;// 进来要选中哪个标签
+
+	public MainFragment() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public MainFragment(int id) {
+		// TODO Auto-generated constructor stub
+		this.selectedId = id;
+	}
 
 	@SuppressLint("InflateParams")
 	@Override
@@ -35,28 +45,18 @@ public class MainFragment extends Fragment {
 
 		radioGroup = (RadioGroup) view.findViewById(R.id.rg_tab);
 
-		// 进去之后默认是客户列表页
-		radioGroup.check(R.id.customer);
-		// android.app.FragmentTransaction transaction =
-		// fragmentManager.beginTransaction();
-		// android.app.Fragment fragment =
-		// FragmentFactory.getInstanceByIndex(2);
-		// transaction.replace(R.id.main_content_frame, fragment);
-		// transaction.addToBackStack(null);
-		// transaction.commit();
-		setTabSelection(R.id.customer);
+		// 进去之后默认是客户列表页，如果设置了要选中哪一页，就设置selectedId的值
+		if (selectedId != -1) {
+			radioGroup.check(selectedId);
+			setTabSelection(selectedId);
+		} else {
+			radioGroup.check(R.id.customer);
+			setTabSelection(R.id.customer);
+		}
 
 		radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
-				// android.app.FragmentTransaction transaction =
-				// fragmentManager.beginTransaction();
-				// android.app.Fragment fragment =
-				// FragmentFactory.getInstanceByIndex(checkedId);
-				// transaction.replace(R.id.main_content_frame, fragment);
-
-				// transaction.addToBackStack(null);
-				// transaction.commit();
 				setTabSelection(checkedId);
 			}
 		});

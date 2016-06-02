@@ -9,6 +9,7 @@
     <string name="settings">设置</string>
     <string name="customers">客户列表</string>
     <string name="add_customer">新增客户</string>
+    <string name="business">商务</string>
 
     <string-array name="customer_status">
         <item>初访</item>
