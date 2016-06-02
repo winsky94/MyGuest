@@ -58,6 +58,7 @@ public class LoginActivity extends Activity implements OnClickListener, LoginVie
 		// TODO Auto-generated method stub
 		Intent intent = new Intent(this, MainActivity.class);
 		startActivity(intent);
+		finish();
 	}
 
 	@Override

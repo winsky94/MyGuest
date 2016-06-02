@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="light_blue">#5CACEE</color>
     <color name="white">#FFFFFFFF</color>
-     <color name="transparent">#0000</color>
+    <color name="transparent">#0000</color>
     <color name="weibo_listtab_off">#8d8d8d</color>
+    <color name="griditems_bg">#ffe8ecef</color>
+    <color name="commo_text_color">#ff333333</color>
+    <color name="line">#ffd3dde6</color>
+
 </resources>
