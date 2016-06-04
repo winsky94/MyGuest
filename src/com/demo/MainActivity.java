@@ -17,12 +17,9 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import cn.bmob.v3.Bmob;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class MainActivity extends SlidingFragmentActivity implements OnClickListener {
-	private String Bmob_AppId = "bf3fe974a31df1f3dbd8a20fcb34bb70";
-
 	private long exitTime = 0;// 监测再按一次返回键就退出程序
 	private android.app.FragmentManager fragmentManager;
 	private ImageView topButton;
@@ -46,10 +43,6 @@ public class MainActivity extends SlidingFragmentActivity implements OnClickList
 		android.app.Fragment fragment = new MainFragment();
 		transaction.replace(R.id.content_frame, fragment);
 		transaction.commit();
-
-		// 初始化 Bmob SDK
-		// 使用时请将第二个参数Application ID替换成你在Bmob服务器端创建的Application ID
-		Bmob.initialize(this, Bmob_AppId);
 	}
 
 	/**

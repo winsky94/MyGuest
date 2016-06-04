@@ -20,7 +20,7 @@ public class ContractFragment extends BaseFragment {
 	@Override
 	public String initContent() {
 		// TODO Auto-generated method stub
-		return "商机管理";
+		return "合同管理";
 	}
 
 	@Override

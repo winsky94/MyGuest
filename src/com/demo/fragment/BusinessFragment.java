@@ -3,6 +3,8 @@ package com.demo.fragment;
 import com.demo.R;
 import com.demo.view.MyGridAdapter;
 import com.demo.view.MyGridView;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -10,6 +12,7 @@ import android.app.FragmentTransaction;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
@@ -19,6 +22,8 @@ import android.widget.TextView;
 public class BusinessFragment extends BaseFragment {
 	private ImageView imageView;
 	private MyGridView gridview;
+	private ImageView topButton;
+	private ImageView backButton;
 
 	@Override
 	public String initContent() {
@@ -35,6 +40,15 @@ public class BusinessFragment extends BaseFragment {
 		imageView = (ImageView) getActivity().findViewById(R.id.addButton);
 		imageView.setImageResource(0);
 		// imageView.setOnClickListener(addListener);
+
+		// 设置左上角图标
+		topButton = (ImageView) getActivity().findViewById(R.id.topButton);
+		// topButton.setOnClickListener(new clicker());
+		// topButton.setImageResource(R.drawable.ic_top_bar_category);
+		topButton.setVisibility(View.VISIBLE);
+
+		backButton = (ImageView) getActivity().findViewById(R.id.backButton);
+		backButton.setVisibility(View.GONE);
 
 		initView(view);
 		return view;
@@ -61,6 +75,20 @@ public class BusinessFragment extends BaseFragment {
 				FragmentTransaction ft2 = getFragmentManager().beginTransaction();
 				ft2.replace(R.id.content_frame, new ContractFragment());
 				ft2.commit();
+			}
+		}
+	}
+
+	class clicker extends SlidingFragmentActivity implements OnClickListener {
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			switch (v.getId()) {
+			case R.id.topButton:
+				toggle();
+				break;
+			default:
+				break;
 			}
 		}
 	}

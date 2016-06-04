@@ -8,7 +8,7 @@ import android.view.View;
 public class CustomerFragmentAll extends BaseFragment {
 	@Override
 	public String initContent() {
-		return "这是客户界面";
+		return "客户列表";
 	}
 
 	@SuppressLint("InflateParams")
