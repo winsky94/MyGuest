@@ -33,7 +33,7 @@ public class CustomerFragmentMy extends BaseFragment {
 
 	@Override
 	public String initContent() {
-		return "这是客户界面";
+		return "客户列表";
 	}
 
 	@Override
@@ -41,17 +41,8 @@ public class CustomerFragmentMy extends BaseFragment {
 		// TODO Auto-generated method stub
 		View view = inflater.inflate(R.layout.frag_customer_my, null);
 		initData();
-		// mListView = new ExpandableListView(getActivity());
-		// mListView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-		// LayoutParams.FILL_PARENT));
-		// getActivity().setContentView(mListView);
 		mListView = (ListView) view.findViewById(R.id.myCustomerList);
 
-		// mListView.setGroupIndicator(getResources().getDrawable(R.drawable.expander_floder));
-		// mAdapter = new ExpandAdapter(getActivity(), mData);
-		// mListView.setAdapter(mAdapter);
-		// mListView.setDescendantFocusability(ExpandableListView.FOCUS_AFTER_DESCENDANTS);
-		// mListView.setOnChildClickListener(new childClickListener());
 		mListView.setAdapter(new ListViewAdapter(mData, getActivity()));
 		return view;
 	}

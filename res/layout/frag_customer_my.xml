@@ -5,9 +5,9 @@
 
     <ListView
         android:id="@+id/myCustomerList"
-        android:layout_marginTop="50dp"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent"
+        android:layout_marginTop="50dp" >
     </ListView>
 
     <!--
@@ -18,7 +18,6 @@
         android:gravity="center"
         android:paddingLeft="15.0dip"
         android:text="这是我的客户列表页"
-        android:textSize="14.0sp" />
-    -->
+        android:textSize="14.0sp" />    -->
 
 </RelativeLayout>

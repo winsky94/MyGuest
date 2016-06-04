@@ -27,7 +27,7 @@ public abstract class BaseFragment extends Fragment {
 		topTextView.setText(initContent());
 
 		// 这样来切换布局，而不是局限于一个布局
-//		View view = inflater.inflate(initLayout(), null);
+		// View view = inflater.inflate(initLayout(), null);
 		return initLayout(inflater);
 	}
 
@@ -35,4 +35,5 @@ public abstract class BaseFragment extends Fragment {
 
 	public abstract View initLayout(LayoutInflater inflater);
 	// R.layout.frag_mycomments
+
 }
