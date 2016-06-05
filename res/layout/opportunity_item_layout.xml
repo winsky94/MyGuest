@@ -12,7 +12,8 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="20dp"
         android:gravity="center"
-        android:text="初步洽谈" />
+        android:text="初步洽谈"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="220dp"

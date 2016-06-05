@@ -48,14 +48,21 @@ public class OpportunityViewAdapter extends BaseAdapter {
 		// 使用View的对象itemView与R.layout.item关联
 		View itemView = inflater.inflate(R.layout.opportunity_item_layout, null);
 
-		// 通过findViewById()方法实例R.layout.item内各组件
+		// 状态
 		TextView status = (TextView) itemView.findViewById(R.id.status);
 		status.setText(OpportunityStatus.toString(item.getStatus()));
+		status.setTextColor(OpportunityStatus.getColor(item.getStatus()));
+
+		// 标题
 		TextView title = (TextView) itemView.findViewById(R.id.title);
 		title.setText(item.getTitle());
+
+		// 预估金额|客户姓名
 		TextView detail = (TextView) itemView.findViewById(R.id.detail);
 		String detailStr = item.getMoney() + "元　|　" + item.getCustomerName();
 		detail.setText(detailStr);
+
+		// 商机类型
 		TextView type = (TextView) itemView.findViewById(R.id.type);
 		String typeStr = item.getType();
 		type.setText(typeStr);

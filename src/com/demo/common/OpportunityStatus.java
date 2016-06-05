@@ -88,7 +88,7 @@ public enum OpportunityStatus {
 		case price:
 			return Color.parseColor(ColorList.purple);
 		case contract:
-			return Color.parseColor(ColorList.yellow);
+			return Color.parseColor(ColorList.orange);
 		case win:
 			return Color.parseColor(ColorList.red);
 		case lose:
