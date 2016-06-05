@@ -35,13 +35,24 @@ public class OpportunityFragmentMy extends BaseFragment {
 		OpportunityStatus status = OpportunityStatus.discussion;
 		OpportunityItem item = new OpportunityItem(status, "军火", "南京大学", "普通商机", 5000);
 		mData.add(item);
-		
+
+		status = OpportunityStatus.definition;
 		item = new OpportunityItem(status, "军火", "南京大学软件学院", "普通商机", 5000);
 		mData.add(item);
-		
+
+		status = OpportunityStatus.contract;
 		item = new OpportunityItem(status, "军火", "南京大学", "普通商机", 5000);
 		mData.add(item);
-		
+
+		status = OpportunityStatus.price;
+		item = new OpportunityItem(status, "军火", "南京大学", "普通商机", 5000);
+		mData.add(item);
+
+		status = OpportunityStatus.win;
+		item = new OpportunityItem(status, "军火", "南京大学", "普通商机", 5000);
+		mData.add(item);
+
+		status = OpportunityStatus.lose;
 		item = new OpportunityItem(status, "军火", "南京大学", "普通商机", 5000);
 		mData.add(item);
 
