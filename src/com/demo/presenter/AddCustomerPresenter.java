@@ -4,7 +4,7 @@ import com.demo.domain.Customer;
 import com.demo.listener.OnAddCustomerListener;
 import com.demo.model.AddCustomerModel;
 import com.demo.model.impl.AddCustomerModelImpl;
-import com.demo.view.AddCustomerView;
+import com.demo.view.customer.AddCustomerView;
 
 import android.content.Context;
 

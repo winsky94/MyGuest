@@ -1,8 +1,8 @@
 package com.demo;
 
-import com.demo.fragment.CustomerFragmentAll;
-import com.demo.fragment.LeftFragment;
 import com.demo.fragment.MainFragment;
+import com.demo.fragment.customer.CustomerFragmentAll;
+import com.demo.fragment.left.LeftFragment;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 

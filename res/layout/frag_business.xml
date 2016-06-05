@@ -14,7 +14,7 @@
             android:fillViewport="true"
             android:scrollbars="none" >
 
-            <com.demo.view.MyGridView
+            <com.demo.view.business.BusinessGridView
                 android:id="@+id/gridview"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

@@ -1,5 +1,9 @@
 package com.demo.fragment;
 
+import com.demo.fragment.business.BusinessFragment;
+import com.demo.fragment.customer.CustomerFragment;
+import com.demo.fragment.work.WorkFragment;
+
 import android.app.Fragment;
 
 public class FragmentFactory {

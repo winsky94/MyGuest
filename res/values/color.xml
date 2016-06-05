@@ -9,4 +9,9 @@
     <color name="commo_text_color">#ff333333</color>
     <color name="line">#ffd3dde6</color>
 
+    <!-- 商机不同类别对应的不同颜色 -->
+    <color name="common_type">#00ff00</color>
+    <color name="important_type">#ff0000</color>
+    <color name="error">#eeee00</color>
+
 </resources>
